@@ -1,0 +1,19 @@
+
+body {
+  background-image: url(http://jajsound.com/onewebmedia/Background01.jpg);
+  background-size: cover;
+  background-position: bottom;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  padding: 0;
+}
+.img {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+h1 {
+  color: blue;
+  border-bottom: 2px solid blue;
+}
