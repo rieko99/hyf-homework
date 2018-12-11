@@ -1,0 +1,5 @@
+let english = "Hello World";
+let syrian = "مرحبا بالعالم";
+let japanese = "konichiwa sekai";
+
+console.log(english, syrian, japanese);
