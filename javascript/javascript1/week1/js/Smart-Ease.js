@@ -24,4 +24,4 @@ volumeInMeters = juliasVolume;
 gardenSizeInM2 = juliasGarden;
 housePrice = volumeInMeters * 2.5 * 1000 + gardenSizeInM2 * 300;
 console.log("This is what Julia should pay ", housePrice);
-console.log("Julia have paid ", housePrice - juliasHouse, "too much");
+console.log("Julia have paid ", housePrice - juliasHouse, "too little");
