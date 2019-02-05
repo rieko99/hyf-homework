@@ -1,0 +1,72 @@
+body {
+  width: 80%;
+  height: auto;
+  padding: 2.5% 0;
+  margin: 0 auto;
+  font-size: 1.5em;
+  font-family: sans-serif;
+}
+header {
+  display: flex;
+}
+nav {
+  background: gray;
+  border: 1px solid black;
+  margin-left: 10%;
+  padding: 2.5% 5%;
+  text-align: center;
+  flex: 4;
+}
+.logo {
+    background: gray;
+    border: 1px solid black;
+    margin-right: 20%;
+    padding: 2.5% 5%;
+    text-align: center;
+    flex: 1;
+}
+.big-box {
+border: 1px solid black;
+width: 100%;
+}
+.box, .box-2 , .box-3 , .box-4  {
+  color: gray;
+  background: gray;
+  border-right: 1px solid black;
+  padding: .6% 0;
+}
+.box {
+  width: 5%;
+}
+.box-2 {
+  width: 25%;
+}
+.box-3 {
+  width: 45%;
+}
+.box-4 {
+  width: 95%;
+}
+.offers {
+  width: 40%;
+  line-height: 2em;
+}
+.txt1 {
+  display: flex;
+}
+.fst {
+  width: 30%;
+}
+.scd {
+  width: 30%;
+}
+input[type=text], input[type=local], input[type=number]  {
+  padding: 1% 0;
+}
+label {
+  padding-right: 2.5%;
+}
+#toggel:checked ~ .person-info-Uncheck {
+  color: blue;
+  display: none;
+}

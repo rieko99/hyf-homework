@@ -1,0 +1,39 @@
+{
+  "musices":[{
+    "singer": "Adele",
+    "song": "Hello",
+    "duration": 6
+  },
+  {
+    "singer": "Seafret",
+    "song": "Oceans",
+    "duration": 3.5
+  },
+  {
+    "singer": "Daughter",
+    "song": "Youth",
+    "duration": 4.2
+  }],
+  "sports":{
+    "football":[{
+      "player": "Cristiano Ronaldo",
+      "age": "33",
+      "club":"Juventus"
+      },
+      {
+        "player": "Lionel Messi",
+        "age": "31",
+        "club": "Barcelona"
+        }],
+    "basketball":[{
+      "player": "LeBron James",
+      "age": "34",
+      "club": "Los Angeles Lakers"
+      },
+      {
+        "player": "Stephen Curry",
+        "age": "30",
+        "club": "Golden State Warriors"
+        }]
+    }
+}

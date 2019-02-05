@@ -1,0 +1,24 @@
+[
+  {
+    "name":"fish",
+    "id":1,
+    "price":350,
+    "drinks": [
+      "cokacola","faxecondi"
+    ],
+    "exstras": [
+      "chees", "mayonse"
+    ]
+  },
+  {
+    "name":"durum",
+    "id":2,
+    "price":250,
+    "drinks": [
+      "cokacola","faxecondi"
+    ],
+    "exstras": [
+      "chees", "mayonse"
+    ]
+  }
+]
