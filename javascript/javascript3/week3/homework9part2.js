@@ -26,8 +26,10 @@ class ShoppingCart {
         // Implement functionality here
           let p1 = document.createElement('p');
           document.body.appendChild(p1);
+          let totleAmout = 0;
           let totle = this.products.map(b => b)
-          p1.innerHTML = 'Totle price: ' + totle.map(x => +x.price);
+          totle.forEach(product => totleAmout += product.price)
+          p1.innerHTML = 'Totle price: ' + totleAmout;
     }
 
     renderProducts() {
@@ -35,7 +37,7 @@ class ShoppingCart {
         let ul = document.querySelector('.ul');
         this.products.map((product) => {
           let lis = document.createElement('li');
-          lis.innerHTML = product;
+          lis.innerHTML = product.name;
           ul.appendChild(lis);
         })
 
@@ -57,7 +59,7 @@ const flatscreen = new Product('flat-screen', 5000);
 const shoppingCart = new ShoppingCart([flatscreen]);
 const something = new Product('something', 2000);
 shoppingCart.getUser();
-shoppingCart.addProduct([something]);
+shoppingCart.addProduct(something);
 shoppingCart.renderProducts();
 shoppingCart.getTotal();
-shoppingCart.removeProduct(something);
+// shoppingCart.removeProduct(something);
