@@ -46,9 +46,11 @@ setInterval(() => {
 
 
 console.log('=== Fetching repo data ===');
-let repos = [fetch('https://api.github.com/search/repositories?q=user:rieko99'), fetch('https://api.github.com/search/repositories?q=user:Afshinrommel'), fetch('https://api.github.com/search/repositories?q=user:humayunadilshahzad')];
+var users = ['rieko99', 'Afshinrommel','humayunadilshahzad']
 
-Promise.all(repos.map(repo => repo.then(data => data.json())))
+let pendingUsers = users.map(n => fetch('https://api.github.com/search/repositories?q=user:' + n))
+
+Promise.all(pendingUsers)
 .then((responses => {
   console.log(responses)
   responses.forEach((data) => {
