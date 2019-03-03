@@ -39,23 +39,27 @@ class Quiz {
   }
 
   showScore() {
-    let counter = 0;
-    let timer = setInterval(() => counter++,1000);
-    button.innerHTML = 'Get score';
-      clearInterval(timer)
       selectListIdsCounter++
-      classP.innerHTML = `It took you ${counter} second`
       p.innerHTML = `You have answered ${document.querySelectorAll('option:checked[is-answer=true]').length} / ${document.querySelectorAll('li').length}`
       getDifficultyLevel()
+    }
 }
+
 
 function executeQuiz(quizName) {
   let quiz1 = new Quiz (quizName);
   quiz1.renderQuestions()
+  let counter = 0;
+  let timer = setInterval(() => counter++,1000);
+  button.innerHTML = 'Get score';
   button.addEventListener('click', () => {
+  clearInterval(timer)
   quiz1.showScore()
-}, once)}
+  classP.innerHTML = `It took you ${counter} second`
+}, once)
 }
+
+
 button.innerHTML = 'Start quiz';
 button.addEventListener('click', () => {
   executeQuiz('someThing')
@@ -82,7 +86,7 @@ document.body.appendChild(div)
 let submitDifficultyLevel = document.createElement('button')
 div.appendChild(submitDifficultyLevel)
 submitDifficultyLevel.innerHTML = 'SUBMIT';
-selectOptions(difficultyLevels, div, optionIdsCounter)
+createSelectOptions(difficultyLevels, div, optionIdsCounter)
 submitDifficultyLevel.addEventListener('click', () => {
   sumSelectedValue()
   renderDiffuclty()
@@ -99,8 +103,12 @@ function sumSelectedValue() {
 let pDiffculty = document.createElement('p');
 function renderDiffuclty() {
   ul.appendChild(pDiffculty);
-  (veryHardCounter > hardCounter && veryHardCounter > easyCounter && veryHardCounter > veryEasyCounter) ? pDiffculty.innerHTML = 'Very hard' :
-  (veryHardCounter < hardCounter && hardCounter > easyCounter && hardCounter > veryEasyCounter) ? pDiffculty.innerHTML = 'Hard' :
-  (easyCounter > hardCounter && veryHardCounter < easyCounter && easyCounter > veryEasyCounter) ? pDiffculty.innerHTML = 'Easy' :
-  (veryEasyCounter > hardCounter && veryEasyCounter > easyCounter && veryHardCounter < veryEasyCounter) ? pDiffculty.innerHTML = 'Very easy' : ''
+  (veryHardCounter > hardCounter && veryHardCounter > easyCounter && veryHardCounter > veryEasyCounter)
+   ? pDiffculty.innerHTML = 'Very hard' :
+  (veryHardCounter < hardCounter && hardCounter > easyCounter && hardCounter > veryEasyCounter)
+   ? pDiffculty.innerHTML = 'Hard' :
+  (easyCounter > hardCounter && veryHardCounter < easyCounter && easyCounter > veryEasyCounter)
+   ? pDiffculty.innerHTML = 'Easy' :
+  (veryEasyCounter > hardCounter && veryEasyCounter > easyCounter && veryHardCounter < veryEasyCounter)
+   ? pDiffculty.innerHTML = 'Very easy' : ''
 }
