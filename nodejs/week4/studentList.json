@@ -1,5 +1,5 @@
-let studentsInfo = [
- {   "name": "Stella Carson",   "last": "Wood",   "email": "ribcus@wizzuco.ps",   "phone": "(679) 309-3717",   "gender": "Male",   "age": 25,   "birthday": "3/7/1984",   "street": "Uzve Junction",   "state": "IN",   "city": "Abepumu",   "class Id": 12616816447 },
+[
+ {   "name": "Stella",   "last": "Wood",   "email": "ribcus@wizzuco.ps",   "phone": "(679) 309-3717",   "gender": "Male",   "age": 25,   "birthday": "3/7/1984",   "street": "Uzve Junction",   "state": "IN",   "city": "Abepumu",   "class Id": 12616816447 },
  {   "name": "Herman Ramirez",   "last": "Jensen",   "email": "nedek@vampowir.to",   "phone": "(540) 342-8370",   "gender": "Male",   "age": 56,   "birthday": "6/11/1995",   "street": "Dovu Manor",   "state": "WA",   "city": "Pafijruh",   "class Id": 685513 },
  {   "name": "Eddie Valdez",   "last": "Roy",   "email": "nej@tif.su",   "phone": "(962) 289-2821",   "gender": "Male",   "age": 53,   "birthday": "4/4/1967",   "street": "Juflem Extension",   "state": "IA",   "city": "Getauz",   "class Id": 215873 },
  {   "name": "Maggie Gomez",   "last": "Simpson",   "email": "rihguc@igo.md",   "phone": "(335) 404-6476",   "gender": "Female",   "age": 61,   "birthday": "6/29/1996",   "street": "Boba Park",   "state": "LA",   "city": "Pekwemah",   "class Id": 174567730897655200 },
@@ -19,63 +19,4 @@ let studentsInfo = [
  {   "name": "Amelia Brewer",   "last": "Nelson",   "email": "wat@mapka.ni",   "phone": "(327) 751-5019",   "gender": "Male",   "age": 54,   "birthday": "5/16/1999",   "street": "Fihwaw Park",   "state": "LA",   "city": "Cugajneh",   "class Id": 602035834100327 },
  {   "name": "Harriett Estrada",   "last": "White",   "email": "fuwo@jehjucun.bd",   "phone": "(655) 621-6068",   "gender": "Male",   "age": 58,   "birthday": "2/5/2001",   "street": "Mugsa Glen",   "state": "OH",   "city": "Okaunmep",   "class Id": 607633788199 },
  {   "name": "Genevieve Sandoval",   "last": "Stanley",   "email": "ilimobe@vufusa.rw",   "phone": "(382) 847-8501",   "gender": "Male",   "age": 49,   "birthday": "9/27/1973",   "street": "Wunap Boulevard",   "state": "VT",   "city": "Ukdafag",   "class Id": 456867715862963 }
-];
-
-
-const http = require('http');
-const studentBook = require('./studentBook');
-let server = http.createServer(function functionName(req, res) {
-  // console.log('req', req)
-  const url = req.url
-  const students = new studentBook(studentsInfo);
-  if (url === '/getList' && req.method === 'GET') {
-    res.statusCode = 201;
-    res.end(JSON.stringify(students.getList()))
-  }
-  else if (url === '/getListByClass' && req.method === 'GET') {
-    res.statusCode = 201;
-    res.end(JSON.stringify(students.getListByClass(6574)))
-  }
-  else if (url === '/getStudentDetailByName' && req.method === 'GET') {
-    res.statusCode = 201;
-    res.end(JSON.stringify(students.getStudentDetailByName('Genevieve Sandoval')))
-  }
-  else if (url === '/addNewStudent' && req.method === 'POST') {
-    if (students.isAlreadyInClass('dfv@dafv.com')) {
-      res.statusCode = 400;
-      res.end('student already exist')
-    } else {
-      students.addNewStudent({name:'wisam', email:'dfv@dafv.com'});
-      res.statusCode = 201;
-      res.end('student added successfully')
-    }
-  }
-  else if (url === '/editStudentInfo' && req.method === 'PUT') {
-    if (students.isAlreadyInClass('dfv@dafv.com')) {
-      students.editStudentInfo('dfv@dafv.com', 'name', 'Rieko');
-      res.statusCode = 201;
-      res.end('Student edited successfully')
-    } else {
-      res.statusCode = 400;
-      res.end('Student does not exist')
-    }
-  }
-  else if (url === '/deleteStudentByEmail' && req.method === 'DELETE') {
-    if (students.isAlreadyInClass('dfv@dafv.com')) {
-      students.deleteStudentByEmail('dfv@dafv.com');
-      res.statusCode = 201;
-      res.end('Student deleted successfully');
-    } else {
-      res.statusCode = 400;
-      res.end('Student does not exist');
-    }
-  }
-  else {
-    res.statusCode = 400;
-    res.end('not found')
-  }
-});
-
-server.listen(8050, function () {
-  console.log('hello world')
-});
+]
