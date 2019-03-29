@@ -1,111 +1,22 @@
-const jsonfile = require('jsonfile');
-const file = 'studentList.json';
-let studentJson = jsonfile.readFileSync(file);
-
-
+const studentList = require('./studentList');
 const express = require('express');
 const bodyParser = require('body-parser');
-const studentList = require('./studentList');
-
-const port = 8081;
-const hyf_students = new studentList(studentJson);
-
+const routerJs = require('./router.js');
 
 const app = express();
-const router = express.Router();
+const port = 8081;
 
 let logger = (req, res, next) => {
   console.info(`GOT REQUEST! ${req.method} ${req.originalUrl}`);
   next();
-}
-
-app.use('/api', router);
+};
 app.use(logger);
+app.use('/api', routerJs);
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-
-app.get('/', (req, res) => res.send('HYF students list API'))
-
-router.route('/students/:studentName')
-  .get((req, res) => {
-      const studentName = hyf_students.getStudentDetailByName(req.params.studentName);
-      if (studentName.length > 0) {
-        res.status(201);
-        res.send(studentName);
-      } else {
-        res.status(404);
-        res.send('Student does not exist');
-      }
-    })
-
-
-
-    router.route('/students')
-      .get((req, res) => {
-        if(req.query.name) {
-          const studentName = hyf_students.getStudentDetailByName(req.query.name);
-          if (studentName.length > 0) {
-            res.status(201);
-            res.send(studentName);
-          } else {
-            res.status(404);
-            res.send('Student does not exist');
-          }
-        }
-    else if (req.query.classid) {
-      let classList = hyf_students.getListByClass(req.query.classid);
-      if (classList.length > 0) {
-        res.status(201);
-        res.send(classList);
-      } else {
-        res.status(404);
-        res.send('Invaled class ID');
-      }
-    }
-    else {
-      res.send(hyf_students.getList())
-    }
-  })
-  .post((req, res) => {
-    if (req.query.newStudent) {
-      const valdeater = hyf_students.isAlreadyInClass(req.query.newStudent.email);
-      if (valdeater) {
-        res.status(404);
-        res.send('Student already exist');
-      } else {
-        res.status(201);
-        res.send(hyf_students.addNewStudent(req.query.newStudent));
-        res.send('Student added successfully');
-      }
-    }
-    else {
-      res.send('the new student email is required!!')
-    }
-  })
-  .put((req, res) => {
-    if (req.query.studentEmail && req.query.keyToEdit && req.query.newInfo) {
-
-    }
-    })
-  .delete((req, res) => {
-    if (req.query.email) {
-      const valdeater = hyf_students.isAlreadyInClass(req.query.email);
-      if (valdeater) {
-        res.status(201);
-        hyf_students.deleteStudentByEmail(req.query.email);
-        res.send(`student with email ${req.query.email} deleted successfully`)
-      } else {
-        res.status(404);
-        res.send('email not found');
-      }
-    }
-    else {
-      res.send('the student email is required!!')
-    }
-    });
-
+app.get('/', (req, res) => res.send('HYF students list API'));
 app.listen(port, () =>
   console.log(`HYF API running on port: ${port}`)
 );

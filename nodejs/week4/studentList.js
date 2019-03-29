@@ -1,5 +1,7 @@
 
-
+const jsonfile = require('jsonfile')
+const file = 'studentList.json';
+let studentJson = jsonfile.readFileSync(file);
 
 
 
@@ -7,7 +9,7 @@ class studentList {
 
 
 constructor (students){
-    this.students = students;
+    this.students = studentJson;
 }
 
   getList(){
@@ -31,7 +33,8 @@ constructor (students){
   }
 
   addNewStudent(newStudent){
-      this.students.push(newStudent);
+    this.students.push(newStudent);
+    this.writeToStudentJson();
   }
   isAlreadyInClass(studentEmail) {
     let isEmailMatch =false;
@@ -44,13 +47,20 @@ constructor (students){
   }
 
   deleteStudentByEmail(email){
-    let nameIndex = this.students.findIndex(student => student.email === email);
+    let nameIndex = this.students.findIndex(student => student.email.toLowerCase === email.toLowerCase);
     this.students.splice(nameIndex, 1);
+    this.writeToStudentJson();
   }
 
   editStudentInfo(studentEmail, keyToEdit, newInfo){
     let nameIndex = this.students.findIndex(student => student.email === studentEmail);
     this.students[nameIndex][keyToEdit] = newInfo;
+    this.writeToStudentJson();
   }
+  writeToStudentJson() {
+        jsonfile.writeFile(file, this.students, function (err) {
+            if (err) console.error(err)
+        })
+    }
 }
 module.exports = studentList;
